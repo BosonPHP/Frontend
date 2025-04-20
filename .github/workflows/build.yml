@@ -1,9 +1,6 @@
 name: Build Binaries
 
 on:
-  push:
-    branches:
-      - master
   release:
     types:
       - created
@@ -52,7 +49,7 @@ jobs:
         uses: ./.github/actions/upload
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: "Windows-WebView2-${{ matrix.platform.arch }}-${{ github.event.release.tag_name }}"
+          name: "Windows-WebView2-${{ matrix.platform.arch }}"
           path: ${{ env.BUILD_DIR }}/bin/
 
   #
@@ -90,7 +87,7 @@ jobs:
         uses: ./.github/actions/upload
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: "MacOS-WebKit-Universal-${{ github.event.release.tag_name }}"
+          name: "MacOS-WebKit-Universal"
           path: ${{ env.BUILD_DIR }}/bin/
 
   #
@@ -148,7 +145,7 @@ jobs:
         uses: ./.github/actions/upload
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: "Linux-Qt5-${{ matrix.platform.arch }}-${{ github.event.release.tag_name }}"
+          name: "Linux-Qt5-${{ matrix.platform.arch }}"
           path: ${{ env.BUILD_DIR }}/bin/
 
   build-linux-qt6:
@@ -200,7 +197,7 @@ jobs:
         uses: ./.github/actions/upload
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: "Linux-Qt6-${{ matrix.platform.arch }}-${{ github.event.release.tag_name }}"
+          name: "Linux-Qt6-${{ matrix.platform.arch }}"
           path: ${{ env.BUILD_DIR }}/bin/
 
   build-linux-gtk:
@@ -257,6 +254,6 @@ jobs:
         uses: ./.github/actions/upload
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: "Linux-WebKitGtk-${{ matrix.platform.arch }}-${{ github.event.release.tag_name }}"
+          name: "Linux-WebKitGtk-${{ matrix.platform.arch }}"
           path: ${{ env.BUILD_DIR }}/bin/
 
