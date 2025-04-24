@@ -76,7 +76,7 @@ FetchContent_MakeAvailable(saucer)
 FetchContent_Declare(
     saucer-bindings
     GIT_REPOSITORY https://github.com/saucer/bindings
-    GIT_TAG v6.0.0)
+    GIT_TAG 7b7ca778194cd50b4483ac9d3be5a24d0d8c55eb)
 FetchContent_MakeAvailable(saucer-bindings)
 
 # --------------------------------------------------------------------------------------------------------
