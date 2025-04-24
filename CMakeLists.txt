@@ -3,7 +3,7 @@ project(boson LANGUAGES CXX VERSION 5.0.0)
 
 set(COPYRIGHT "Copyright (c) Nesmeyanov Kirill/Community")
 set(VENDOR "Boson")
-set(DESCRIPTION "PHP WebView Bindings")
+set(DESCRIPTION "Boson frontend runtime binaries")
 set(VERSION "0.2.0")
 set(OUTPUT_NAME "libboson")
 
@@ -24,13 +24,20 @@ if(APPLE)
   set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "Build universal binary" FORCE)
 endif()
 
-if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|AMD64")
-    set(OUTPUT_NAME "${OUTPUT_NAME}-amd64")
+if(APPLE)
+    set(OUTPUT_NAME "${OUTPUT_NAME}-universal")
+elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|AMD64")
+    set(OUTPUT_NAME "${OUTPUT_NAME}-x86_64")
 elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "i[3-6]86|^x86$")
     set(OUTPUT_NAME "${OUTPUT_NAME}-x86")
-elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "arm|aarch64")
-    set(OUTPUT_NAME "${OUTPUT_NAME}-arm64")
+elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "arm")
+    set(OUTPUT_NAME "${OUTPUT_NAME}-arm")
+elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
+    set(OUTPUT_NAME "${OUTPUT_NAME}-aarch64")
+else()
+    set(OUTPUT_NAME "${OUTPUT_NAME}-unknown")
 endif()
+
 
 # --------------------------------------------------------------------------------------------------------
 # CMake options
@@ -76,7 +83,7 @@ FetchContent_MakeAvailable(saucer)
 FetchContent_Declare(
     saucer-bindings
     GIT_REPOSITORY https://github.com/saucer/bindings
-    GIT_TAG 7b7ca778194cd50b4483ac9d3be5a24d0d8c55eb)
+    GIT_TAG v6.0.1)
 FetchContent_MakeAvailable(saucer-bindings)
 
 # --------------------------------------------------------------------------------------------------------
