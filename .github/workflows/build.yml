@@ -1,7 +1,6 @@
 name: Build Binaries
 
 on:
-  push:
   release:
     types:
       - created

@@ -4,7 +4,7 @@ project(boson LANGUAGES CXX VERSION 5.0.0)
 set(COPYRIGHT "Copyright (c) Nesmeyanov Kirill/Community")
 set(VENDOR "Boson")
 set(DESCRIPTION "PHP WebView Bindings")
-set(VERSION "0.1.0")
+set(VERSION "0.2.0")
 set(OUTPUT_NAME "libboson")
 
 add_compile_definitions(BOSON_COPYRIGHT=${COPYRIGHT})
