@@ -1,8 +1,14 @@
 # IDE
 /.idea
-/.vsc
-/.vs
+/.cursor
 
-# Builds
+# Composer
+/composer.lock
+/vendor
 /build
-/cmake-*
+
+# Testing
+test.php
+
+# Toolset
+*.phar
