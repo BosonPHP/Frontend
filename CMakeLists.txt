@@ -66,15 +66,6 @@ set(saucer_modules OFF CACHE BOOL "Disable module support" FORCE)
 set(ENV{GIT_TERMINAL_PROMPT} 0)
 
 FetchContent_Declare(
-    lockpp
-    GIT_REPOSITORY https://github.com/Curve/lockpp
-    GIT_TAG v3.0
-)
-FetchContent_MakeAvailable(lockpp)
-
-include_directories(${lockpp_SOURCE_DIR}/include)
-
-FetchContent_Declare(
     saucer
     GIT_REPOSITORY https://github.com/saucer/saucer
     GIT_TAG v6.0.1)
@@ -93,8 +84,6 @@ FetchContent_MakeAvailable(saucer-bindings)
 add_library(${PROJECT_NAME} SHARED "src/boson.cpp")
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE BOSON_BUILD)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE cr::lockpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE saucer::saucer)
 
@@ -125,9 +114,6 @@ endif()
 # --------------------------------------------------------------------------------------------------------
 # Include directories
 # --------------------------------------------------------------------------------------------------------
-
-target_include_directories(${PROJECT_NAME} PRIVATE ${lockpp_SOURCE_DIR}/include)
-target_include_directories(saucer PRIVATE ${lockpp_SOURCE_DIR}/include)
 
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${saucer-bindings_SOURCE_DIR}/include>)
