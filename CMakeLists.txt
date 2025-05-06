@@ -62,6 +62,7 @@ include(FetchContent)
 
 set(saucer_static ON CACHE BOOL "Build a static library" FORCE)
 set(saucer_modules OFF CACHE BOOL "Disable module support" FORCE)
+set(glaze_ENABLE_AVX2 OFF CACHE BOOL "Disable AVX2 instructions set" FORCE)
 
 set(ENV{GIT_TERMINAL_PROMPT} 0)
 
